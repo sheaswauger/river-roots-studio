@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import logoImport from '../assets/logo.webp';
+const logoSrc = typeof logoImport === 'string' ? logoImport : logoImport.src;
 
 interface Props {
   title?: string;
@@ -20,6 +22,9 @@ const {
     <meta name="description" content={description} />
     <title>{title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   </head>
   <body class="min-h-screen flex flex-col">
     <!-- Announcement Bar -->
@@ -30,7 +35,8 @@ const {
     <!-- Header / Nav -->
     <header class="bg-cream border-b border-moss/10 sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <a href="/" class="font-heading text-xl sm:text-2xl font-bold text-moss tracking-tight">
+        <a href="/" class="flex items-center gap-2 font-heading text-xl sm:text-2xl font-bold text-moss tracking-tight">
+          <img src={logoSrc} alt="" width="40" height="40" class="h-10 w-auto mix-blend-multiply" />
           River Roots Studio
         </a>
 
@@ -85,7 +91,10 @@ const {
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           <!-- Brand Column -->
           <div>
-            <p class="font-heading text-2xl font-bold mb-2">River Roots Studio</p>
+            <div class="flex items-center gap-3 mb-2">
+              <img src={logoSrc} alt="" width="36" height="36" class="h-9 w-auto mix-blend-multiply brightness-0 invert" />
+              <p class="font-heading text-2xl font-bold">River Roots Studio</p>
+            </div>
             <p class="text-cream/80 italic font-heading text-lg mb-4">Unearth Your Creative Compass</p>
             <p class="text-cream/70 text-sm">Jacksonville, Illinois</p>
           </div>

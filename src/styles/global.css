@@ -4,21 +4,30 @@
   --color-cream: #FAF7F2;
   --color-moss: #6B7C5C;
   --color-brown: #4A3728;
-  --color-terracotta: #C4714A;
+  --color-terracotta: #4A5568;
   --color-moss-dark: #556347;
-  --color-terracotta-dark: #A85D3C;
+  --color-terracotta-dark: #6B7A8D;
 
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
 }
 
 body {
   font-family: var(--font-body);
+  font-weight: 400;
   color: var(--color-brown);
   background-color: var(--color-cream);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-weight: 700;
   color: var(--color-moss);
+}
+
+/* Previously italic serif headings → clean modern treatment */
+.font-heading.italic {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.02em;
 }

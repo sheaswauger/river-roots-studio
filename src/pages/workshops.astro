@@ -6,24 +6,28 @@ const pastWorkshops = [
     title: 'A Hundred Ways to North',
     price: '$40',
     image: '/images/workshop-1.jpg',
+    alt: 'Workshop materials spread across a table, ready for creative exploration',
     description: 'A collage and writing journey into orienting yourself by what matters most.',
   },
   {
     title: 'Breadcrumb Compass',
     price: '$45',
     image: '/images/workshop-fall-rituals.jpg',
+    alt: 'Autumn-inspired workshop setting with warm earth tones and gathered natural elements',
     description: 'Follow the trail of small clues your deeper self has been leaving all along.',
   },
   {
     title: 'Witness',
     price: '$43',
     image: '/images/workshop-sextant.png',
+    alt: 'A hand-drawn sextant, symbolizing the search for inner direction',
     description: 'An expressive arts experience in seeing yourself with compassion and clarity.',
   },
   {
     title: 'Threads',
     price: '$37',
     image: '/images/workshop-2.jpg',
+    alt: 'Collage pieces and creative fragments coming together in a workshop session',
     description: 'Tracing the through-lines of your story — what connects who you\'ve been to who you\'re becoming.',
   },
 ];
@@ -68,7 +72,7 @@ const pastWorkshops = [
             <div class="relative overflow-hidden">
               <img
                 src={w.image}
-                alt={w.title}
+                alt={w.alt}
                 style="height: 220px; width: 100%; object-fit: cover; object-position: center;"
               />
               <span class="absolute top-3 right-3 text-xs font-medium uppercase tracking-wider text-cream bg-moss/80 px-2 py-1 rounded">

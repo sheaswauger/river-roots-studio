@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const pastWorkshops = [
+  {
+    title: 'A Hundred Ways to North',
+    price: '$40',
+    image: '/images/workshop-1.jpg',
+    description: 'A collage and writing journey into orienting yourself by what matters most.',
+  },
+  {
+    title: 'Breadcrumb Compass',
+    price: '$45',
+    image: '/images/workshop-fall-rituals.jpg',
+    description: 'Follow the trail of small clues your deeper self has been leaving all along.',
+  },
+  {
+    title: 'Witness',
+    price: '$43',
+    image: '/images/workshop-sextant.png',
+    description: 'An expressive arts experience in seeing yourself with compassion and clarity.',
+  },
+  {
+    title: 'Threads',
+    price: '$37',
+    image: '/images/workshop-2.jpg',
+    description: 'Tracing the through-lines of your story — what connects who you\'ve been to who you\'re becoming.',
+  },
+];
+---
+
+<Layout title="Workshops — River Roots Studio" description="Creative workshops in Expressive Arts, Spiritual Direction, and Ritual. Based in Jacksonville, Illinois.">
+  <!-- PAGE HEADER -->
+  <section class="relative bg-moss/10 py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-moss mb-3 leading-tight">
+        Workshops
+      </h1>
+      <p class="font-heading text-xl sm:text-2xl text-terracotta italic max-w-2xl mx-auto">
+        Your creativity runs in you like the marrow of your bones and the blood in your veins.
+      </p>
+    </div>
+  </section>
+
+  <!-- UPCOMING WORKSHOPS PLACEHOLDER -->
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-moss mb-4">
+        Upcoming Workshops
+      </h2>
+      <div class="bg-moss/5 border border-moss/10 rounded-lg py-10 px-6">
+        <p class="text-brown/70 text-lg italic font-heading">
+          Check back soon for new dates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST WORKSHOPS -->
+  <section class="py-10 sm:py-12 lg:py-14 bg-moss/5">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-center text-moss mb-8">
+        Past Workshops
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
+        {pastWorkshops.map((w) => (
+          <div class="bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm flex flex-col">
+            <div class="relative overflow-hidden">
+              <img
+                src={w.image}
+                alt={w.title}
+                style="height: 220px; width: 100%; object-fit: cover; object-position: center;"
+              />
+              <span class="absolute top-3 right-3 text-xs font-medium uppercase tracking-wider text-cream bg-moss/80 px-2 py-1 rounded">
+                Sold Out
+              </span>
+            </div>
+            <div class="p-4 flex-grow flex flex-col">
+              <h3 class="font-heading text-lg font-semibold text-moss mb-1">{w.title}</h3>
+              <p class="text-brown/60 text-sm leading-relaxed mb-2">{w.description}</p>
+              <span class="text-brown/60 text-sm mt-auto">{w.price}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVATE / GROUP INQUIRY -->
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-moss mb-4">
+        Private &amp; Group Workshops
+      </h2>
+      <p class="text-brown/80 text-lg leading-relaxed mb-6">
+        Interested in a private or group workshop? You may invite four to seven others.
+        Please reach out with at least a week&rsquo;s notice.
+      </p>
+      <a
+        href="/contact"
+        class="inline-block bg-terracotta hover:bg-terracotta-dark text-cream px-8 py-3 rounded-md font-medium text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-terracotta focus:ring-offset-2 focus:ring-offset-cream"
+      >
+        Get in Touch
+      </a>
+    </div>
+  </section>
+</Layout>

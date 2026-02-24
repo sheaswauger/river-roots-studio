@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('journal');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} — River Roots Studio`} description={post.data.excerpt}>
+  <article class="py-10 sm:py-12 lg:py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back link -->
+      <a
+        href="/journal"
+        class="text-terracotta hover:text-terracotta-dark font-medium transition-colors text-sm"
+      >
+        &larr; Back to Journal
+      </a>
+
+      <!-- Header -->
+      <header class="mt-6 mb-8">
+        <time class="text-sm text-brown/50" datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-moss mt-2 leading-tight">
+          {post.data.title}
+        </h1>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none text-brown/80 leading-relaxed
+        prose-headings:font-heading prose-headings:text-moss
+        prose-a:text-terracotta hover:prose-a:text-terracotta-dark
+        prose-strong:text-brown prose-strong:font-semibold
+        prose-blockquote:border-terracotta/30 prose-blockquote:text-brown/70 prose-blockquote:italic">
+        <Content />
+      </div>
+
+      <!-- Back link (bottom) -->
+      <div class="mt-12 pt-6 border-t border-moss/10">
+        <a
+          href="/journal"
+          class="text-terracotta hover:text-terracotta-dark font-medium transition-colors"
+        >
+          &larr; Back to Journal
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

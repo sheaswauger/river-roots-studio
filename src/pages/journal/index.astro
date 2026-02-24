@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('journal')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<Layout title="Journal — River Roots Studio" description="Reflections, creative prompts, and stories from River Roots Studio.">
+  <!-- PAGE HEADER -->
+  <section class="relative bg-moss/10 py-12 sm:py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-moss mb-3 leading-tight">
+        Journal
+      </h1>
+      <p class="font-heading text-xl sm:text-2xl text-terracotta italic">
+        Reflections from the studio.
+      </p>
+    </div>
+  </section>
+
+  <!-- POST GRID -->
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {posts.length === 0 ? (
+        <div class="text-center py-10">
+          <p class="text-brown/60 text-lg italic font-heading">New reflections coming soon.</p>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          {posts.map((post) => (
+            <a
+              href={`/journal/${post.id}`}
+              class="group bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+            >
+              <div class="p-6">
+                <time class="text-sm text-brown/50" datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </time>
+                <h2 class="font-heading text-xl font-semibold text-moss mt-2 mb-2 group-hover:text-terracotta transition-colors">
+                  {post.data.title}
+                </h2>
+                <p class="text-brown/70 text-sm leading-relaxed">
+                  {post.data.excerpt}
+                </p>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+</Layout>

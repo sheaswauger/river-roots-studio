@@ -9,14 +9,18 @@ const posts = (await getCollection('journal')).sort(
 
 <Layout title="Journal — River Roots Studio" description="Reflections, creative prompts, and stories from River Roots Studio.">
   <!-- PAGE HEADER -->
-  <section class="relative bg-moss/10 py-12 sm:py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl text-moss mb-3 leading-tight" style="font-family: 'Great Vibes', cursive; letter-spacing: -0.03em; word-spacing: 0.05em;">
+  <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
+    <img
+      src="/images/journal-header.jpg"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: rgba(0,0,0,0.35);"></div>
+    <div class="relative h-full flex items-center justify-center px-4">
+      <h1 class="text-[4rem] sm:text-[5rem] font-semibold leading-tight text-center" style="font-family: var(--font-accent); color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
         Journal
       </h1>
-      <p class="font-heading text-xl sm:text-2xl text-terracotta italic">
-        Reflections from the studio.
-      </p>
     </div>
   </section>
 
@@ -35,10 +39,7 @@ const posts = (await getCollection('journal')).sort(
               class="group bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <div class="p-6">
-                <time class="text-sm text-brown/50" datetime={post.data.date.toISOString()}>
-                  {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </time>
-                <h2 class="font-heading text-xl font-semibold text-moss mt-2 mb-2 group-hover:text-terracotta transition-colors">
+                <h2 class="font-heading text-xl font-semibold text-moss mb-2 group-hover:text-terracotta transition-colors">
                   {post.data.title}
                 </h2>
                 <p class="text-brown/70 text-sm leading-relaxed">

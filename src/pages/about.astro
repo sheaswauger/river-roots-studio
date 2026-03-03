@@ -4,9 +4,16 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="About — River Roots Studio" description="Meet Donna, the guide behind River Roots Studio. Wanderer, wisdom seeker, risk taker, and lover of joy.">
   <!-- PAGE HEADER -->
-  <section class="relative bg-moss/10 py-12 sm:py-16">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl text-moss mb-3 leading-tight" style="font-family: 'Great Vibes', cursive; letter-spacing: -0.03em; word-spacing: 0.05em;">
+  <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
+    <img
+      src="/images/about-header.jpg"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: rgba(0,0,0,0.35);"></div>
+    <div class="relative h-full flex items-center justify-center px-4">
+      <h1 class="text-[4rem] sm:text-[5rem] font-semibold leading-tight text-center" style="font-family: var(--font-accent); color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
         A Glimpse of Me
       </h1>
     </div>

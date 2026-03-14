@@ -18,6 +18,8 @@ body {
   font-weight: 400;
   color: var(--color-brown);
   background-color: var(--color-cream);
+  line-height: 1.8;
+  letter-spacing: 0.01em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -31,4 +33,32 @@ h1, h2, h3, h4, h5, h6 {
   font-style: normal;
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+/* === DYSLEXIA READABILITY PREVIEW === */
+
+p {
+  margin-bottom: 1.25em;
+}
+
+/* Remove italics from subheads and attributions */
+.italic {
+  font-style: normal !important;
+}
+
+/* Darken muted body text to minimum #5a5a5a */
+.text-brown\/60 { color: #5a5a5a !important; }
+.text-brown\/70 { color: #5a5a5a !important; }
+
+/* Hero body text: left-aligned, max 600px */
+.hero-body {
+  text-align: left !important;
+  max-width: 600px !important;
+  margin-left: 0 !important;
+  margin-right: auto !important;
+}
+
+/* h1: Playfair Display */
+h1 {
+  font-family: 'Playfair Display', serif !important;
 }

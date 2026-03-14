@@ -41,15 +41,6 @@ p {
   margin-bottom: 1.25em;
 }
 
-/* Remove italics from subheads and attributions */
-.italic {
-  font-style: normal !important;
-}
-
-/* Darken muted body text to minimum #5a5a5a */
-.text-brown\/60 { color: #5a5a5a !important; }
-.text-brown\/70 { color: #5a5a5a !important; }
-
 /* Hero body text: left-aligned, max 600px */
 .hero-body {
   text-align: left !important;

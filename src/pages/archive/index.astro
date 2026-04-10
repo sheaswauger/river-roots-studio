@@ -7,7 +7,7 @@ const posts = (await getCollection('journal')).sort(
 );
 ---
 
-<Layout title="Journal — River Roots Studio" description="Reflections, creative prompts, and stories from River Roots Studio.">
+<Layout title="Archive — River Roots Studio" description="Reflections, creative prompts, and stories from River Roots Studio.">
   <!-- PAGE HEADER -->
   <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
     <img
@@ -19,7 +19,7 @@ const posts = (await getCollection('journal')).sort(
     <div class="absolute inset-0" style="background: rgba(0,0,0,0.35);"></div>
     <div class="relative h-full flex items-center justify-center px-4">
       <h1 class="text-[4rem] sm:text-[5rem] font-semibold leading-tight text-center" style="font-family: var(--font-accent); color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
-        Journal
+        Archive
       </h1>
     </div>
   </section>
@@ -35,7 +35,7 @@ const posts = (await getCollection('journal')).sort(
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {posts.map((post) => (
             <a
-              href={`/journal/${post.id}`}
+              href={`/archive/${post.id}`}
               class="group bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
             >
               <div class="p-6">

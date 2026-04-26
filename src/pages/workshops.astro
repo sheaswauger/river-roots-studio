@@ -1,45 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 
-const pastWorkshops = [
-  {
-    title: 'A Hundred Ways to North',
-    price: '$40',
-    image: '/images/workshop-1.jpg',
-    alt: 'Workshop materials spread across a table, ready for creative exploration',
-    description: 'A collage and writing journey into orienting yourself by what matters most.',
-  },
-  {
-    title: 'Breadcrumb Compass',
-    price: '$45',
-    image: '/images/workshop-fall-rituals.jpg',
-    alt: 'Autumn-inspired workshop setting with warm earth tones and gathered natural elements',
-    description: 'Follow the trail of small clues your deeper self has been leaving all along.',
-  },
-  {
-    title: 'Witness',
-    price: '$43',
-    image: '/images/workshop-sextant.png',
-    alt: 'A hand-drawn sextant, symbolizing the search for inner direction',
-    description: 'An expressive arts experience in seeing yourself with compassion and clarity.',
-  },
-  {
-    title: 'Threads',
-    price: '$37',
-    image: '/images/workshop-2.jpg',
-    alt: 'Collage pieces and creative fragments coming together in a workshop session',
-    description: 'Tracing the through-lines of your story — what connects who you\'ve been to who you\'re becoming.',
-  },
-];
+const allWorkshops = await getCollection('workshops');
+const workshops = allWorkshops
+  .filter((w) => w.data.status !== 'archived')
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <Layout title="Workshops — River Roots Studio" description="Creative workshops in Expressive Arts, Spiritual Direction, and Ritual. Based in Jacksonville, Illinois.">
   <!-- PAGE HEADER -->
   <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
     <img
-      src="/images/workshops-header.jpg"
-      alt=""
-      aria-hidden="true"
+      src="/images/workshops-hero.webp"
+      alt="A misty alpine forest with a glassy river reflecting tall pine trees and distant mountains"
       class="absolute inset-0 w-full h-full object-cover object-center"
     />
     <div class="absolute inset-0" style="background: rgba(0,0,0,0.35);"></div>
@@ -50,52 +25,52 @@ const pastWorkshops = [
     </div>
   </section>
 
-  <!-- UPCOMING WORKSHOPS PLACEHOLDER -->
+  <!-- WORKSHOP LISTING -->
   <section class="py-10 sm:py-12 lg:py-14">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-moss mb-4">
-        Upcoming Workshops
-      </h2>
-      <div class="bg-moss/5 border border-moss/10 rounded-lg py-10 px-6">
-        <p class="text-brown/70 text-lg italic font-heading">
-          Check back soon for new dates.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- PAST WORKSHOPS -->
-  <section class="py-10 sm:py-12 lg:py-14 bg-moss/5">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="font-heading text-3xl sm:text-4xl font-bold text-center text-moss mb-8">
-        Past Workshops
-      </h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
-        {pastWorkshops.map((w) => (
-          <div class="bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm flex flex-col">
-            <div class="relative overflow-hidden">
-              <img
-                src={w.image}
-                alt={w.alt}
-                style="height: 220px; width: 100%; object-fit: cover; object-position: center;"
-              />
-              <span class="absolute top-3 right-3 text-xs font-medium uppercase tracking-wider text-cream bg-moss/80 px-2 py-1 rounded">
-                Sold Out
-              </span>
+        {workshops.map((w) => (
+          <a
+            href={`/workshops/${w.id}`}
+            class="group bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm flex flex-col transition-shadow hover:shadow-md"
+          >
+            <div class="relative overflow-hidden" style="height: 220px;">
+              {w.data.heroImage ? (
+                <Image
+                  src={w.data.heroImage}
+                  alt={w.data.heroImageAlt || w.data.title}
+                  class="w-full h-full object-cover object-center transition-transform group-hover:scale-105"
+                  style="height: 220px; width: 100%; object-fit: cover;"
+                  widths={[400, 600]}
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                />
+              ) : (
+                <div
+                  class="w-full h-full flex items-center justify-center"
+                  style="background: linear-gradient(135deg, #6B7C5C 0%, #556347 40%, #4A3728 100%);"
+                >
+                  <span class="text-cream/60 font-heading text-lg font-semibold tracking-wide">{w.data.title}</span>
+                </div>
+              )}
+              {w.data.status === 'upcoming' && (
+                <span class="absolute top-3 right-3 text-xs font-medium uppercase tracking-wider text-cream px-2 py-1 rounded" style="background-color: rgba(107, 124, 92, 0.85);">
+                  Coming Soon
+                </span>
+              )}
             </div>
             <div class="p-4 flex-grow flex flex-col">
-              <h3 class="font-heading text-lg font-semibold text-moss mb-1">{w.title}</h3>
-              <p class="text-brown/60 text-sm leading-relaxed mb-2">{w.description}</p>
-              <span class="text-brown/60 text-sm mt-auto">{w.price}</span>
+              <h3 class="font-heading text-lg font-semibold text-moss mb-1 group-hover:text-moss-dark transition-colors">{w.data.title}</h3>
+              <p class="text-brown/60 text-sm leading-relaxed mb-3">{w.data.shortDescription}</p>
+              <span class="text-moss font-medium text-sm mt-auto">Learn More &rarr;</span>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
   <!-- PRIVATE / GROUP INQUIRY -->
-  <section class="py-10 sm:py-12 lg:py-14">
+  <section class="py-10 sm:py-12 lg:py-14 bg-moss/5">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <h2 class="font-heading text-3xl sm:text-4xl font-bold text-moss mb-4">
         Private &amp; Group Workshops

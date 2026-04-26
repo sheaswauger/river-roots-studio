@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
+
+export async function getStaticPaths() {
+  const workshops = await getCollection('workshops');
+  return workshops.map((workshop) => ({
+    params: { slug: workshop.id },
+    props: { workshop },
+  }));
+}
+
+const { workshop } = Astro.props;
+const { Content } = await render(workshop);
+const { title, price, duration, availability, heroImage, heroImageAlt, status } = workshop.data;
+
+const ctaText = status === 'upcoming' ? 'Express Interest' : 'Reserve a Spot';
+const ctaHref = `/contact?workshop=${encodeURIComponent(title)}`;
+---
+
+<Layout title={`${title} — River Roots Studio`} description={workshop.data.shortDescription}>
+  <!-- HERO -->
+  <section class="relative w-full overflow-hidden" style="height: clamp(280px, 35vw, 400px);">
+    {heroImage ? (
+      <Image
+        src={heroImage}
+        alt={heroImageAlt || title}
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        widths={[600, 1200]}
+        sizes="100vw"
+      />
+    ) : (
+      <div
+        class="absolute inset-0 w-full h-full"
+        style="background: linear-gradient(135deg, #6B7C5C 0%, #556347 40%, #4A3728 100%);"
+      />
+    )}
+    <div class="absolute inset-0" style="background: rgba(0,0,0,0.35);"></div>
+    <div class="relative h-full flex items-center justify-center px-4">
+      <h1 class="text-[3rem] sm:text-[4rem] lg:text-[5rem] font-semibold leading-tight text-center" style="font-family: var(--font-accent); color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
+        {title}
+      </h1>
+    </div>
+  </section>
+
+  <!-- WORKSHOP DETAIL -->
+  <section class="py-10 sm:py-12 lg:py-14">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Back link -->
+      <a href="/workshops" class="inline-flex items-center text-moss hover:text-moss-dark text-sm font-medium mb-8 transition-colors">
+        &larr; Back to Workshops
+      </a>
+
+      <!-- Meta info -->
+      <div class="flex flex-wrap gap-4 items-center mb-6 text-sm text-brown/70">
+        {price && (
+          <span class="font-heading font-semibold text-lg text-moss">${price}</span>
+        )}
+        {duration && (
+          <span>{duration}</span>
+        )}
+        {availability && (
+          <span class="italic">{availability}</span>
+        )}
+      </div>
+
+      <!-- Body content -->
+      <div class="prose prose-brown max-w-none mb-8 text-brown/80 leading-relaxed [&>p]:mb-4 [&>blockquote]:border-l-4 [&>blockquote]:border-moss/30 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-brown/70">
+        <Content />
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-8 mb-4">
+        <a
+          href={ctaHref}
+          class="inline-block bg-terracotta hover:bg-terracotta-dark text-cream px-8 py-3 rounded-md font-medium text-lg transition-colors focus:outline-none focus:ring-2 focus:ring-terracotta focus:ring-offset-2 focus:ring-offset-cream"
+        >
+          {ctaText}
+        </a>
+      </div>
+
+      {price && (
+        <p class="text-brown/50 text-sm italic">
+          Payment is collected in person at the workshop.
+        </p>
+      )}
+    </div>
+  </section>
+</Layout>

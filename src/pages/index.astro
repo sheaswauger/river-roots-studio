@@ -1,7 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import logoImport from '../assets/logo.webp';
 const logoSrc = typeof logoImport === 'string' ? logoImport : logoImport.src;
+
+const allWorkshops = await getCollection('workshops');
+const featuredWorkshop = allWorkshops.find((w) => w.data.featured);
+let FeaturedContent: any = null;
+if (featuredWorkshop) {
+  const rendered = await render(featuredWorkshop);
+  FeaturedContent = rendered.Content;
+}
 ---
 
 <Layout>
@@ -90,49 +100,53 @@ const logoSrc = typeof logoImport === 'string' ? logoImport : logoImport.src;
   </section>
 
   <!-- FEATURED WORKSHOP -->
-  <section class="py-10 sm:py-12 lg:py-14 bg-moss/5">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-        <div class="aspect-[4/3] rounded-lg overflow-hidden">
-          <img
-            src="/images/workshop-1.jpg"
-            alt="Hands at work in a River Roots workshop, surrounded by natural materials and creative tools"
-            class="w-full h-full object-cover"
-          />
-        </div>
+  {featuredWorkshop && (
+    <section class="py-10 sm:py-12 lg:py-14 bg-moss/5">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="aspect-[4/3] rounded-lg overflow-hidden">
+            {featuredWorkshop.data.heroImage ? (
+              <Image
+                src={featuredWorkshop.data.heroImage}
+                alt={featuredWorkshop.data.heroImageAlt || featuredWorkshop.data.title}
+                class="w-full h-full object-cover"
+                widths={[400, 800]}
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            ) : (
+              <div
+                class="w-full h-full flex items-center justify-center"
+                style="background: linear-gradient(135deg, #6B7C5C 0%, #556347 40%, #4A3728 100%);"
+              />
+            )}
+          </div>
 
-        <!-- Content -->
-        <div>
-          <p class="font-heading text-lg italic text-brown/70 mb-4 leading-relaxed">
-            Your creativity runs in you like the marrow of your bones and the blood in your veins.
-          </p>
-          <p class="text-terracotta font-medium text-sm uppercase tracking-wider mb-2">Featured Workshop</p>
-          <h2 class="font-heading text-3xl sm:text-4xl font-bold text-moss mb-2">
-            A Hundred Ways to North
-          </h2>
-          <p class="text-brown/60 text-sm mb-3">$40</p>
-          <p class="text-brown/80 leading-relaxed mb-6">
-            A collage and writing journey into orienting yourself by what matters most.
-          </p>
-          <a
-            href="/workshops"
-            class="inline-block bg-terracotta hover:bg-terracotta-dark text-cream px-6 py-3 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-terracotta focus:ring-offset-2 focus:ring-offset-cream"
-          >
-            Learn More &amp; Register
-          </a>
+          <!-- Content -->
+          <div>
+            <p class="font-heading text-lg italic text-brown/70 mb-4 leading-relaxed">
+              Your creativity runs in you like the marrow of your bones and the blood in your veins.
+            </p>
+            <p class="text-terracotta font-medium text-sm uppercase tracking-wider mb-2">Featured Workshop</p>
+            <h2 class="font-heading text-3xl sm:text-4xl font-bold text-moss mb-2">
+              {featuredWorkshop.data.title}
+            </h2>
+            {featuredWorkshop.data.price && (
+              <p class="text-brown/60 text-sm mb-3">${featuredWorkshop.data.price}</p>
+            )}
+            <div class="text-brown/80 leading-relaxed mb-6 [&>p]:mb-3">
+              <FeaturedContent />
+            </div>
+            <a
+              href={`/contact?workshop=${encodeURIComponent(featuredWorkshop.data.title)}`}
+              class="inline-block bg-terracotta hover:bg-terracotta-dark text-cream px-6 py-3 rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-terracotta focus:ring-offset-2 focus:ring-offset-cream"
+            >
+              {featuredWorkshop.data.status === 'upcoming' ? 'Express Interest' : 'Learn More & Register'}
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- SECTION BREAK IMAGE -->
-  <section class="h-32 overflow-hidden" aria-hidden="true">
-    <img
-      src="/images/home-interior.jpg"
-      alt=""
-      class="w-full h-full object-cover object-center"
-    />
-  </section>
+    </section>
+  )}
 
   <!-- ABOUT TEASER -->
   <section class="py-10 sm:py-12 lg:py-14">
@@ -163,21 +177,4 @@ const logoSrc = typeof logoImport === 'string' ? logoImport : logoImport.src;
     </div>
   </section>
 
-  <!-- TESTIMONIAL PULL QUOTE -->
-  <section class="py-12 sm:py-16 lg:py-20 bg-brown/5">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <blockquote class="relative">
-        <span class="absolute -top-6 left-1/2 -translate-x-1/2 font-heading text-[5rem] leading-none text-terracotta/25 select-none" aria-hidden="true">&ldquo;</span>
-        <p class="font-heading italic leading-relaxed mb-4 text-brown" style="font-size: clamp(1.5rem, 4vw, 2.5rem);">
-          I left feeling whole and at peace with myself.
-        </p>
-        <footer class="text-brown/60">
-          <cite class="not-italic">
-            <span class="font-medium text-brown">Heather</span>
-            <span class="block text-sm mt-1">Jacksonville, IL</span>
-          </cite>
-        </footer>
-      </blockquote>
-    </div>
-  </section>
 </Layout>

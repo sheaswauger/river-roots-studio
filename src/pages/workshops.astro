@@ -6,6 +6,7 @@ import { Image } from 'astro:assets';
 const allWorkshops = await getCollection('workshops');
 const workshops = allWorkshops
   .filter((w) => w.data.status !== 'archived')
+  .filter((w) => !w.data.hidden)
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
@@ -28,6 +29,9 @@ const workshops = allWorkshops
   <!-- WORKSHOP LISTING -->
   <section class="py-10 sm:py-12 lg:py-14">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-brown/70 text-center italic mb-8" style="font-family: var(--font-heading);">
+        All workshops are donation-based; pay what you can. All workshop proceeds will be donated to the non-profit organization Save the Children.
+      </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
         {workshops.map((w) => (
           <a

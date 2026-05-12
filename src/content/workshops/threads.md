@@ -2,8 +2,8 @@
 title: "Threads"
 order: 6
 shortDescription: "A foraging of the quiet threads running through your life. Written with the non-dominant hand to bypass the linear brain and reveal longings you didn't know you carried."
-price: 40
 duration: "Approximately 2 hours"
+hidden: true
 status: active
 bookingType: inquiry
 ---

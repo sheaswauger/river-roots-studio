@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
 const { workshop } = Astro.props;
 const { Content } = await render(workshop);
-const { title, price, duration, availability, heroImage, heroImageAlt, status } = workshop.data;
+const { title, duration, availability, heroImage, heroImageAlt, status } = workshop.data;
 
 const ctaText = status === 'upcoming' ? 'Express Interest' : 'Reserve a Spot';
 const ctaHref = `/contact?workshop=${encodeURIComponent(title)}`;
@@ -54,9 +54,6 @@ const ctaHref = `/contact?workshop=${encodeURIComponent(title)}`;
 
       <!-- Meta info -->
       <div class="flex flex-wrap gap-4 items-center mb-6 text-sm text-brown/70">
-        {price && (
-          <span class="font-heading font-semibold text-lg text-moss">${price}</span>
-        )}
         {duration && (
           <span>{duration}</span>
         )}
@@ -80,11 +77,9 @@ const ctaHref = `/contact?workshop=${encodeURIComponent(title)}`;
         </a>
       </div>
 
-      {price && (
-        <p class="text-brown/50 text-sm italic">
-          Payment is collected in person at the workshop.
-        </p>
-      )}
+      <p class="text-brown/50 text-sm italic">
+        All workshops are donation-based; pay what you can.
+      </p>
     </div>
   </section>
 </Layout>

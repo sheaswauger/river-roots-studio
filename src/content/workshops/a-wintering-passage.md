@@ -2,7 +2,6 @@
 title: "A Wintering Passage"
 order: 8
 shortDescription: "A sacred space for those of us who need to change the bitter taste of wintering into an acceptable season."
-price: 27
 duration: "Approximately 1.5 hours"
 availability: "Offered November through February, or by group request of 3 or more"
 status: active

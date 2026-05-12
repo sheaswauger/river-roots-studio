@@ -2,7 +2,6 @@
 title: "MUDD Season"
 order: 7
 shortDescription: "How to play and browse your imagination in the space of your no longer and not yet."
-price: 25
 duration: "Approximately one hour"
 status: active
 bookingType: inquiry

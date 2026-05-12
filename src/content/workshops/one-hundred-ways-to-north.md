@@ -2,8 +2,9 @@
 title: "One Hundred Ways to North"
 order: 2
 shortDescription: "A resetting of your compass in the midst of loss."
-price: 44
 duration: "Approximately 2 hours"
+heroImage: "../../assets/workshops/a-hundred-ways-to-north-bw.jpg"
+heroImageAlt: "One Hundred Ways to North workshop artwork in black and white"
 status: active
 featured: false
 bookingType: inquiry

@@ -2,7 +2,6 @@
 title: "Map with No Names"
 order: 3
 shortDescription: "A knowing, a naming, and mending of the things torn by grief."
-price: 44
 duration: "Approximately 2 hours"
 status: active
 bookingType: inquiry

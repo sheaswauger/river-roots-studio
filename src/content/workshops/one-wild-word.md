@@ -2,7 +2,6 @@
 title: "One Wild Word"
 order: 9
 shortDescription: "When a wild word reveals itself to you, your inner cartography starts mapping countries yet to come."
-price: 25
 duration: "Approximately one hour"
 availability: "Offered November through February, or upon group request of 3 or more"
 status: active

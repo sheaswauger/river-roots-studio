@@ -2,8 +2,8 @@
 title: "Witness"
 order: 5
 shortDescription: "A tactile, mini-nature retreat. Weaving earth looms and poetry to walk you closer to Mary Oliver's instructions: pay attention, be astonished, tell about it."
-price: 44
 duration: "Approximately 2 hours"
+hidden: true
 status: active
 bookingType: inquiry
 ---

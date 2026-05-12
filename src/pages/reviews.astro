@@ -22,15 +22,10 @@ const testimonials = [
     location: 'Jacksonville, IL',
     text: `I was worried that I wouldn't be able to enjoy myself as I'm not 'artsy.' The class was nothing like I had anticipated. My experience was cathartic.`,
   },
-  {
-    name: 'Siobhan',
-    location: 'Jacksonville, IL',
-    text: `Donna created such a welcoming environment and led the workshop with a calm and assuring demeanor that allowed me to feel comfortable and at ease.`,
-  },
 ];
 ---
 
-<Layout title="Reviews — River Roots Studio" description="Hear from past workshop participants about their experiences at River Roots Studio.">
+<Layout title="Reviews | River Roots Studio" description="Hear from past workshop participants about their experiences at River Roots Studio.">
   <!-- PAGE HEADER -->
   <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
     <img
@@ -50,8 +45,8 @@ const testimonials = [
   <!-- TESTIMONIAL GRID -->
   <section class="py-10 sm:py-12 lg:py-14">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
-        {testimonials.slice(0, 4).map((t) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {testimonials.map((t) => (
           <div class="bg-white border border-moss/10 rounded-lg p-6 sm:p-8 shadow-sm">
             <svg class="w-10 h-10 mb-3 text-terracotta/50" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
@@ -65,21 +60,6 @@ const testimonials = [
             </footer>
           </div>
         ))}
-      </div>
-      <!-- Connie — full-width centered -->
-      <div class="max-w-2xl mx-auto">
-        <div class="bg-white border border-moss/10 rounded-lg p-6 sm:p-8 shadow-sm">
-          <svg class="w-10 h-10 mb-3 text-terracotta/50" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5c-1.073 0-2.099-.49-2.748-1.179z" />
-          </svg>
-          <p class="text-brown/80 leading-relaxed mb-4 text-sm sm:text-base">
-            {testimonials[4].text}
-          </p>
-          <footer class="text-brown/60">
-            <span class="font-heading font-semibold text-moss">{testimonials[4].name}</span>
-            <span class="text-sm"> &middot; {testimonials[4].location}</span>
-          </footer>
-        </div>
       </div>
     </div>
   </section>

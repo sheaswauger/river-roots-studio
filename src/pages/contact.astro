@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact — River Roots Studio" description="Get in touch with River Roots Studio. Ask questions or inquire about private workshops in Jacksonville, Illinois.">
+<Layout title="Contact | River Roots Studio" description="Get in touch with River Roots Studio. Ask questions or inquire about private workshops in Jacksonville, Illinois.">
   <!-- PAGE HEADER -->
   <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
     <img
@@ -73,4 +73,16 @@ import Layout from '../layouts/Layout.astro';
       </p>
     </div>
   </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const workshop = params.get('workshop');
+    if (workshop) {
+      const decoded = decodeURIComponent(workshop);
+      const messageField = document.querySelector('textarea[name="message"], textarea#message, textarea');
+      if (messageField && !messageField.value) {
+        (messageField as HTMLTextAreaElement).value = `I'd like to inquire about ${decoded}.`;
+      }
+    }
+  </script>
 </Layout>

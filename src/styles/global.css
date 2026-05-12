@@ -41,11 +41,11 @@ p {
   margin-bottom: 1.25em;
 }
 
-/* Hero body text: left-aligned, max 600px */
+/* Hero body text: centered, max 600px */
 .hero-body {
-  text-align: left !important;
+  text-align: center !important;
   max-width: 600px !important;
-  margin-left: 0 !important;
+  margin-left: auto !important;
   margin-right: auto !important;
 }
 

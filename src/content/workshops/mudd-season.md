@@ -3,6 +3,8 @@ title: "MUDD Season"
 order: 7
 shortDescription: "How to play and browse your imagination in the space of your no longer and not yet."
 duration: "Approximately one hour"
+heroImage: "../../assets/workshops/mudd-season-bw.jpg"
+heroImageAlt: "MUDD Season workshop artwork in black and white"
 status: active
 bookingType: inquiry
 ---

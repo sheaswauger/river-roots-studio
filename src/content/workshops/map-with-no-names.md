@@ -3,6 +3,8 @@ title: "Map with No Names"
 order: 3
 shortDescription: "A knowing, a naming, and mending of the things torn by grief."
 duration: "Approximately 2 hours"
+heroImage: "../../assets/workshops/map-with-no-name-bw.jpeg"
+heroImageAlt: "Map with No Names workshop artwork in black and white"
 status: active
 bookingType: inquiry
 ---

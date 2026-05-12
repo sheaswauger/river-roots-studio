@@ -3,6 +3,8 @@ title: "One Wild Word"
 order: 9
 shortDescription: "When a wild word reveals itself to you, your inner cartography starts mapping countries yet to come."
 duration: "Approximately one hour"
+heroImage: "../../assets/workshops/one-wild-word-bw.jpg"
+heroImageAlt: "One Wild Word workshop artwork in black and white"
 availability: "Offered November through February, or upon group request of 3 or more"
 status: active
 bookingType: inquiry

@@ -1,6 +1,6 @@
 ---
 title: "Breadcrumb Compass"
-order: 4
+order: 3
 shortDescription: "A unique way to follow the small clues your deeper self has been leaving you all along."
 duration: "Approximately 2 hours"
 heroImage: "../../assets/workshops/breadcrumb-compass-bw.jpeg"

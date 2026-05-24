@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Place | River Roots Studio" description="The River Roots Studio space in Jacksonville, Illinois. A sanctuary for creative exploration.">
+  <!-- PAGE HEADER -->
+  <section class="relative w-full overflow-hidden" style="height: clamp(300px, 35vw, 400px);">
+    <img
+      src="/images/hero-faq.jpg"
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover object-center"
+    />
+    <div class="absolute inset-0" style="background: rgba(0,0,0,0.35);"></div>
+    <div class="relative h-full flex items-center justify-center px-4">
+      <h1 class="text-[4rem] sm:text-[5rem] font-semibold leading-tight text-center" style="font-family: var(--font-accent); color: #ffffff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
+        Place
+      </h1>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="py-10 sm:py-12">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <p class="text-brown/80 text-lg leading-relaxed text-center mb-10">
+        A small sanctuary in Jacksonville, Illinois, where earth, art, and stillness meet.
+      </p>
+
+      <!-- GALLERY GRID -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <!-- Add studio photographs here as <img> tags. Credit: Timothy -->
+        <!-- Example:
+        <img src="/images/studio/photo-1.jpg" alt="Description" class="w-full h-48 object-cover rounded-lg" />
+        -->
+      </div>
+
+      <!-- EMPTY STATE -->
+      <p class="text-brown/50 text-center italic font-heading text-lg py-12">
+        Studio photographs coming soon.
+      </p>
+    </div>
+  </section>
+</Layout>

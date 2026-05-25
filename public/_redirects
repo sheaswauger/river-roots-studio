@@ -1,1 +1,3 @@
+/journal/the-map-with-no-names /creative-compass/the-map-with-no-names 301
+/archive/the-map-with-no-names /creative-compass/the-map-with-no-names 301
 /journal/* /archive/:splat 301

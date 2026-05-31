@@ -1,6 +1,6 @@
 ---
 title: "Map with No Names"
-order: 3
+order: 4
 shortDescription: "A knowing, a naming, and mending of the things torn by grief."
 duration: "Approximately 2 hours"
 heroImage: "../../assets/workshops/map-with-no-name-bw.jpeg"

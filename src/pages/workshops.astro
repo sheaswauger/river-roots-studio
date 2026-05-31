@@ -69,6 +69,40 @@ const workshops = allWorkshops
             </div>
           </a>
         ))}
+
+        <!-- SHELTER placeholder -->
+        <div class="relative bg-white border border-moss/10 rounded-lg overflow-hidden shadow-sm flex flex-col">
+          <div class="relative overflow-hidden" style="height: 220px;">
+            <div
+              class="w-full h-full flex items-center justify-center"
+              style="background: linear-gradient(135deg, #6B7C5C 0%, #556347 40%, #4A3728 100%);"
+            >
+              <span class="font-heading text-4xl font-bold tracking-widest text-cream/80">SHELTER</span>
+            </div>
+            <!-- Under Construction tape -->
+            <div
+              class="absolute inset-0 flex items-center justify-center pointer-events-none"
+              style="transform: rotate(-15deg);"
+            >
+              <div
+                class="px-8 py-2 text-sm font-bold uppercase tracking-widest text-cream whitespace-nowrap"
+                style="background: repeating-linear-gradient(
+                  45deg,
+                  #B7604A,
+                  #B7604A 10px,
+                  #A0522D 10px,
+                  #A0522D 20px
+                );"
+              >
+                Under Construction
+              </div>
+            </div>
+          </div>
+          <div class="p-4 flex-grow flex flex-col">
+            <h3 class="font-heading text-lg font-semibold text-moss mb-1">SHELTER</h3>
+            <p class="text-brown/60 text-sm leading-relaxed mb-3 italic">Details coming soon.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

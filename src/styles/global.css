@@ -8,13 +8,12 @@
   --color-moss-dark: #556347;
   --color-terracotta-dark: #6B7A8D;
 
-  --font-heading: 'Montserrat', sans-serif;
-  --font-body: 'Montserrat', sans-serif;
-  --font-accent: 'Caveat', cursive;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Atkinson Hyperlegible', sans-serif;
 }
 
 body {
-  font-family: 'Atkinson Hyperlegible', 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-weight: 400;
   color: var(--color-brown);
   background-color: var(--color-cream);
@@ -26,13 +25,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-moss);
-}
-
-/* Previously italic serif headings → clean modern treatment */
-.font-heading.italic {
-  font-style: normal;
-  font-weight: 600;
-  letter-spacing: -0.02em;
 }
 
 /* === DYSLEXIA READABILITY PREVIEW === */
@@ -49,7 +41,3 @@ p {
   margin-right: auto !important;
 }
 
-/* h1: Playfair Display */
-h1 {
-  font-family: 'Playfair Display', serif !important;
-}
